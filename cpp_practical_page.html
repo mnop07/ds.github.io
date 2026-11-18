@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<title>LAMP LAB | C++ Practicals</title>
+<style>
+:root{--bg:#f3f6fb;--card:#fff;--ink:#172033;--muted:#68758a;--accent:#2563eb;--code:#111827;--line:#e5eaf2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+header{background:#101827;color:#fff;padding:23px 18px;text-align:center;border-bottom:4px solid #3b82f6}
+.brand{font-size:23px;font-weight:800;letter-spacing:1.5px}
+.brand span{color:#60a5fa}
+header p{margin:5px 0 0;color:#cbd5e1;font-size:13px;letter-spacing:1px}
+main{width:min(900px,calc(100% - 28px));margin:32px auto 50px}
+.intro{text-align:center;margin-bottom:28px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent)}
+h1{font-size:clamp(25px,5vw,36px);margin:7px 0;color:#111827}
+.intro p{margin:0;color:var(--muted)}
+.count{display:inline-block;margin-top:15px;background:#e5edff;color:#1d4ed8;padding:6px 13px;border-radius:30px;font-size:12px;font-weight:700}
+.program{background:var(--card);border:1px solid var(--line);border-radius:13px;margin:18px 0;overflow:hidden;box-shadow:0 5px 18px rgba(15,23,42,.045)}
+.program-head{padding:17px 20px 12px}
+.number{font-size:11px;letter-spacing:1.5px;font-weight:800;color:var(--accent)}
+h2{font-size:19px;margin:4px 0 0}
+.code-top{display:flex;align-items:center;justify-content:space-between;background:#1f2937;color:#e5e7eb;padding:9px 14px;font-size:12px}
+.copy{border:1px solid #64748b;background:#334155;color:#fff;border-radius:6px;padding:6px 11px;font-weight:700;cursor:pointer}
+.copy:hover{background:#475569}
+pre{margin:0;padding:18px;overflow-x:auto;background:var(--code);color:#e5e7eb;font:13px/1.65 Consolas,Monaco,"Courier New",monospace;tab-size:4}
+code{white-space:pre}
+footer{text-align:center;padding:23px 15px;background:#101827;color:#cbd5e1;font-size:12px}
+footer strong{color:#fff;letter-spacing:1px}
+@media(max-width:600px){main{margin-top:24px}.program-head{padding:15px 15px 10px}h2{font-size:17px}pre{font-size:12px;padding:14px}.code-top{padding:8px 12px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">LAMP <span>LAB</span></div>
+  <p>BCA / C++ PRACTICALS</p>
+</header>
+<main>
+  <section class="intro">
+    <div class="eyebrow">PROGRAMMING LAB / BCA</div>
+    <h1>C++ Practical Programs</h1>
+    <p>A collection of practical programs and source codes.</p>
+    <div class="count">05 PROGRAMS AVAILABLE</div>
+  </section>
+
+  <article class="program">
+    <div class="program-head"><div class="number">PROGRAM 01</div><h2>Selection Sort</h2></div>
+    <div class="code-top"><span>C++ SOURCE CODE</span><button class="copy" type="button">Copy Code</button></div>
+    <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class SelectionSort {
+    int a[100], n, i, j, pos, temp;
+
+public:
+    void getData() {
+        cout &lt;&lt; "Enter the number of elements: ";
+        cin &gt;&gt; n;
+        cout &lt;&lt; "Enter " &lt;&lt; n &lt;&lt; " elements:" &lt;&lt; endl;
+        for (i = 0; i &lt; n; i++) {
+            cin &gt;&gt; a[i];
+        }
+    }
+
+    void sort() {
+        for (i = 0; i &lt; n - 1; i++) {
+            pos = i;
+            for (j = i + 1; j &lt; n; j++) {
+                if (a[j] &lt; a[pos]) {
+                    pos = j;
+                }
+            }
+            temp = a[i];
+            a[i] = a[pos];
+            a[pos] = temp;
+        }
+    }
+
+    void display() {
+        cout &lt;&lt; "The sorted elements using the Selection Sort technique are:" &lt;&lt; endl;
+        for (i = 0; i &lt; n; i++) {
+            cout &lt;&lt; a[i] &lt;&lt; " ";
+        }
+        cout &lt;&lt; endl;
+    }
+};
+
+int main() {
+    SelectionSort S;
+    S.getData();
+    S.sort();
+    S.display();
+    return 0;
+}</code></pre>
+  </article>
+
+  <article class="program">
+    <div class="program-head"><div class="number">PROGRAM 02</div><h2>Bubble Sort</h2></div>
+    <div class="code-top"><span>C++ SOURCE CODE</span><button class="copy" type="button">Copy Code</button></div>
+    <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class BubbleSort {
+    int a[100], n, i, j, temp;
+
+public:
+    void getData() {
+        cout &lt;&lt; "Enter the number of elements: ";
+        cin &gt;&gt; n;
+        cout &lt;&lt; "Enter " &lt;&lt; n &lt;&lt; " elements:" &lt;&lt; endl;
+        for (i = 0; i &lt; n; i++) {
+            cin &gt;&gt; a[i];
+        }
+    }
+
+    void sort() {
+        for (i = 0; i &lt; n - 1; i++) {
+            for (j = 0; j &lt; n - i - 1; j++) {
+                if (a[j] &gt; a[j + 1]) {
+                    temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    void display() {
+        cout &lt;&lt; "The sorted elements using the Bubble Sort technique are:" &lt;&lt; endl;
+        for (i = 0; i &lt; n; i++) {
+            cout &lt;&lt; a[i] &lt;&lt; " ";
+        }
+        cout &lt;&lt; endl;
+    }
+};
+
+int main() {
+    BubbleSort B;
+    B.getData();
+    B.sort();
+    B.display();
+    return 0;
+}</code></pre>
+  </article>
+
+  <article class="program">
+    <div class="program-head"><div class="number">PROGRAM 03</div><h2>Linear Search</h2></div>
+    <div class="code-top"><span>C++ SOURCE CODE</span><button class="copy" type="button">Copy Code</button></div>
+    <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a[20], n, key, pos = -1, i;
+
+    cout &lt;&lt; "Enter the number of elements: ";
+    cin &gt;&gt; n;
+    cout &lt;&lt; "Enter " &lt;&lt; n &lt;&lt; " elements:" &lt;&lt; endl;
+    for (i = 0; i &lt; n; i++) {
+        cin &gt;&gt; a[i];
+    }
+
+    cout &lt;&lt; "Enter the element to be searched: ";
+    cin &gt;&gt; key;
+
+    for (i = 0; i &lt; n; i++) {
+        if (a[i] == key) {
+            pos = i;
+            break;
+        }
+    }
+
+    if (pos != -1)
+        cout &lt;&lt; "Element found at position " &lt;&lt; pos + 1 &lt;&lt; "." &lt;&lt; endl;
+    else
+        cout &lt;&lt; "Element not found in the list." &lt;&lt; endl;
+
+    return 0;
+}</code></pre>
+  </article>
+
+  <article class="program">
+    <div class="program-head"><div class="number">PROGRAM 04</div><h2>Towers of Hanoi</h2></div>
+    <div class="code-top"><span>C++ SOURCE CODE</span><button class="copy" type="button">Copy Code</button></div>
+    <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+void TOH(int n, char source, char auxiliary, char destination) {
+    if (n == 1) {
+        cout &lt;&lt; "Move Disk 1 from " &lt;&lt; source
+             &lt;&lt; " to " &lt;&lt; destination &lt;&lt; endl;
+    } else {
+        TOH(n - 1, source, destination, auxiliary);
+        cout &lt;&lt; "Move Disk " &lt;&lt; n << " from " &lt;&lt; source
+             &lt;&lt; " to " &lt;&lt; destination &lt;&lt; endl;
+        TOH(n - 1, auxiliary, source, destination);
+    }
+}
+
+int main() {
+    int n;
+    cout &lt;&lt; "Enter the number of disks: ";
+    cin &gt;&gt; n;
+    cout &lt;&lt; endl;
+    cout &lt;&lt; "Steps to solve Towers of Hanoi:" &lt;&lt; endl;
+    TOH(n, 'A', 'B', 'C');
+    return 0;
+}</code></pre>
+  </article>
+
+  <article class="program">
+    <div class="program-head"><div class="number">PROGRAM 05</div><h2>Dynamic Array – Smallest and Largest Element</h2></div>
+    <div class="code-top"><span>C++ SOURCE CODE</span><button class="copy" type="button">Copy Code</button></div>
+    <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n, i, *arr, max, min;
+
+    cout &lt;&lt; "Enter the size of the array: ";
+    cin &gt;&gt; n;
+
+    arr = new int[n];
+
+    cout &lt;&lt; "Enter the array elements:" &lt;&lt; endl;
+    for (i = 0; i &lt; n; i++) {
+        cin &gt;&gt; arr[i];
+    }
+
+    min = arr[0];
+    max = arr[0];
+
+    for (i = 0; i &lt; n; i++) {
+        if (arr[i] &lt; min) {
+            min = arr[i];
+        }
+        if (arr[i] &gt; max) {
+            max = arr[i];
+        }
+    }
+
+    cout &lt;&lt; "The maximum element in the array is: " &lt;&lt; max &lt;&lt; endl;
+    cout &lt;&lt; "The minimum element in the array is: " &lt;&lt; min &lt;&lt; endl;
+
+    delete[] arr;
+    return 0;
+}</code></pre>
+  </article>
+</main>
+<footer><strong>LAMP LAB</strong><br>© 2026 &nbsp; | &nbsp; BUILT FOR LEARNING.</footer>
+<script>
+document.querySelectorAll('.copy').forEach(button => {
+  button.addEventListener('click', async () => {
+    const code = button.closest('.program').querySelector('code').innerText;
+    try {
+      await navigator.clipboard.writeText(code);
+      button.textContent = 'Copied!';
+      setTimeout(() => button.textContent = 'Copy Code', 1500);
+    } catch (e) {
+      const area = document.createElement('textarea');
+      area.value = code;
+      document.body.appendChild(area);
+      area.select();
+      document.execCommand('copy');
+      area.remove();
+      button.textContent = 'Copied!';
+      setTimeout(() => button.textContent = 'Copy Code', 1500);
+    }
+  });
+});
+</script>
+</body>
+</html>
